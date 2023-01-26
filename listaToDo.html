@@ -15,20 +15,16 @@
     <div id="lista">
         <h1>Lista de Tarefas</h1>
         <div class="input-group mb-3">
-            <input 
-                type="text" 
-                v-model="novaTarefa" 
-                class="form-control" 
-                placeholder="Nome da tarefa" 
-                
-            >
+            <input type="text" v-model="novaTarefa" class="form-control" placeholder="Nome da tarefa" >
             
+            <!-- <input type="text"  :style="styleSelect" class="form-control"> -->
             <select :style="styleSelect"
                     name="select" 
                     class="form-select form-select-sm" 
                     aria-label=".form-select-sm example"
                     v-model="opcao"
                 >
+
                 <option  v-for="opcao in opcoes" :kei="opcao.id" >{{opcao.opcao}}</option>
             </select>
             

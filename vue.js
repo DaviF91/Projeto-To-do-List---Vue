@@ -14,61 +14,74 @@ new Vue({
         },
         
         opcoes: [
-            {opcao:"A fazer", idStatus: id1++},
-            {opcao:"Em andamento", idStatus: id1++},
-            {opcao:"Finalizado", idStatus: id1++}
+            {opcao:"A fazer"},
+            {opcao:"Em andamento"},
+            {opcao:"Finalizado"}
         ],
 
         novaTarefa: "",  
-        tarefas: []
+        tarefas: [],
+
+        
+        tarefaSelecionada: []
+
     },
     methods: {
         salvarTarefa(){
+            //nova condição != null
             if (this.novaTarefa == "") {
                 alert("Por favor digite uma tarefa")
-            } else if (this.novaTarefa.length > 100) {
+            } 
+            else if (this.novaTarefa.length > 100) {
                 alert ("A tarefa não pode ter mais que 100 caracteres")
-            } else {
+            } 
+            else if (this.tarefaSelecionada) {
+                this.tarefaSelecionada
+                this.colorOption(this.tarefaSelecionada)
+            }
+            else{
                 if (this.styleSelect.display == "none"){
                     this.opcao = "A fazer"
+                    //atribuir já a cor
+                    this.styleOption.color = "red"
                 }
                 
-                var idOpcao = this.opcoes.map(i => i.idStatus)
-                this.tarefas.push({id: id++, status: this.opcao, idOp: idOpcao, texto: this.novaTarefa})
-                this.colorOption()
-            }
+                this.tarefas.push({id: id++, status: this.opcao, texto: this.novaTarefa})
+            } 
             this.novaTarefa = ""
             this.styleSelect.display = "none"
         },
+
+        colorOption(tarefaSelecionada){
+            var statusTarefaSelecionada = tarefaSelecionada.map(i => i.status)
+            
+
+            for (var i = 0; i < this.tarefas.length; i++){
+                
+                if (statusTarefa[i] == "A fazer"){
+                    this.styleOption.color = "red"           
+                } 
+                if (statusTarefa[i] == "Em andamento"){
+                    this.styleOption.color = "yellow" 
+                }
+                if (statusTarefa[i] == "Finalizado"){
+                    this.styleOption.color = "green" 
+                }
+            }
+        },
         
         editarTarefa(tarefa){
+            this.styleSelect.display = "" 
             this.novaTarefa = tarefa.texto
             this.tarefas = this.tarefas.filter(i => i !== tarefa)
-            this.styleSelect.display = ""  
+
+            this.tarefaSelecionada = tarefa
         },
 
         deletarTarefa(tarefa){
             let valida = prompt("Deseja realmente deletar essa tarefa ?")
             if (valida == "Sim"){
                 this.tarefas = this.tarefas.filter(i => i !== tarefa)
-            }
-        },
-
-        colorOption(){
-            var statusTarefa = this.tarefas.map(i => i.status)
-            var idStatus = this.opcoes.map(i=>i.idStatus)
-
-            for (var i = 0; i < this.tarefas.length; i++){
-                
-                if (statusTarefa[i] == "A fazer" && idStatus[i] == 0 ){
-                    this.styleOption.color = "red"           
-                } 
-                if (statusTarefa[i] == "Em andamento" && idStatus[i] == 2 ){
-                    this.styleOption.color = "yellow" 
-                }
-                if (statusTarefa[i] == "Finalizado" && idStatus[i] == 3){
-                    this.styleOption.color = "green" 
-                }
             }
         },
     }
