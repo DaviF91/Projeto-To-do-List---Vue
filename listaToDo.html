@@ -15,48 +15,47 @@
     <div id="lista">
         <h1>Lista de Tarefas</h1>
         <div class="input-group mb-3">
-            <input type="text" v-model="novaTarefa" class="form-control" placeholder="Nome da tarefa"  >
-            
+            <input type="text" v-model="novaTarefa" class="form-control" placeholder="Nome da tarefa" >
             <!-- <input type="text"  :style="styleSelect" class="form-control"> -->
-            <!-- <input type="text" class="form-control" :style="styleSelect" v-model="editaTarefa" > -->
-
             <select :style="styleSelect"
                     name="select" 
                     class="form-select form-select-sm" 
                     aria-label=".form-select-sm example"
                     v-model="opcao"
                 >
-                <option  v-for="opcao in opcoes" :kei="opcao.id" >{{opcao.opcao}}</option>
+
+                <option   v-for="(opcao, index) in opcoes" :kei="opcao"  >{{opcao.opcao}}</option>
             </select>
-            
             <button @click="salvarTarefa" class="btn btn-outline-secondary" type="button" id="button-addon2">Salvar</button>
         </div>
 
         <p v-if="tarefas == ''">Ainda não há tarefas cadastradas</p>
 
         <table v-else class="table" >
-            <tr >
-                <th scope="col">ID</th>
-                <th scope="col" >Status</th>
-                <th scope="col" >Descrição</th>
-            </tr>
-            <tr v-for="tarefa in tarefas" :key="tarefa.id">
-                <td >
-                    {{tarefa.id}}
-                </td>
-                <td :style="styleOption"> <!--:class="[opcao, ativarClasse ]" , :style="styleOption" -->
-                    {{tarefa.status}}
-                </td>
-                <td >
-                    {{tarefa.texto}}
-                    <button class="btn btn-warning" @click="editarTarefa(tarefa)"  >Editar</button>   
-                    <button class="btn btn-danger" @click="deletarTarefa(tarefa)" >Delete</button>
-                </td>
-            </tr>
-        </table>
+            <thead>
+                <tr >
+                    <th scope="col">ID</th>
+                    <th scope="col" >Status</th>
+                    <th scope="col" >Descrição</th>
+                </tr>
+            </thead>
+            <tbody v-for="(tarefa, index) in tarefas" :key="index">
+                <tr>
+                    <td >
+                        {{index}}
+                    </td>
+                    <td v-model="novoStatus" :style="styleOption" > <!--:class="[opcao, ativarClasse ]" , :style="styleOption" -->
+                        {{tarefa.status}}
+                    </td>
+                    <td>
+                        {{tarefa.texto}}
+                        <button class="btn btn-warning" @click="editarTarefa(tarefa)" >Editar</button>   
+                        <button class="btn btn-danger" @click="deletarTarefa(tarefa)" >Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>       
     </div>
-
-    
 </body>
 </html>
 <script src="./vue.js"></script>
