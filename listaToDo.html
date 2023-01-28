@@ -16,17 +16,18 @@
         <h1>Lista de Tarefas</h1>
         <div class="input-group mb-3">
             <input type="text" v-model="novaTarefa" class="form-control" placeholder="Nome da tarefa" >
-            <!-- <input type="text"  :style="styleSelect" class="form-control"> -->
+
             <select :style="styleSelect"
                     name="select" 
                     class="form-select form-select-sm" 
                     aria-label=".form-select-sm example"
                     v-model="opcao"
                 >
-
-                <option   v-for="(opcao, index) in opcoes" :kei="opcao"  >{{opcao.opcao}}</option>
+                <option v-for="(opcao, index) in opcoes" :kei="opcao"  >{{opcao.opcao}}</option>
             </select>
-            <button @click="salvarTarefa" class="btn btn-outline-secondary" type="button" id="button-addon2">Salvar</button>
+
+            <button @click="salvarTarefa(idEditar)" class="btn btn-outline-secondary" type="button" id="button-addon2">Salvar</button>
+            
         </div>
 
         <p v-if="tarefas == ''">Ainda não há tarefas cadastradas</p>
@@ -37,20 +38,27 @@
                     <th scope="col">ID</th>
                     <th scope="col" >Status</th>
                     <th scope="col" >Descrição</th>
+                    <th scope="col" ></th>
                 </tr>
             </thead>
             <tbody v-for="(tarefa, index) in tarefas" :key="index">
-                <tr>
+                <tr :class="{editing: tarefa.id == idEditar}">
                     <td >
-                        {{index}}
+                        {{tarefa.id}}
                     </td>
-                    <td v-model="novoStatus" :style="styleOption" > <!--:class="[opcao, ativarClasse ]" , :style="styleOption" -->
+                    <td :class="{
+                        fazer : tarefa.status=='A fazer', 
+                        andamento : tarefa.status=='Em andamento',
+                        finalizado : tarefa.status=='Finalizado'}"
+                    >
                         {{tarefa.status}}
                     </td>
-                    <td>
+                    <td class="description">
                         {{tarefa.texto}}
+                    </td>
+                    <td>
                         <button class="btn btn-warning" @click="editarTarefa(tarefa)" >Editar</button>   
-                        <button class="btn btn-danger" @click="deletarTarefa(tarefa)" >Delete</button>
+                        <button class="btn btn-danger" @click="deletarTarefa(tarefa)" >Deletar</button>
                     </td>
                 </tr>
             </tbody>

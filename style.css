@@ -6,8 +6,7 @@
 
 body {
     background: #ffffff;
-    font-size: 1.4rem;
-  
+    font-size: 20px;
     display: grid;
     place-items: center;
     height: 100vh;
@@ -16,34 +15,19 @@ body {
 
 #lista {
     background: linear-gradient(287.56deg, #c6d4db 0%, #7fa7e7 100%);;
-    border-radius: 0.6rem;
-    padding: 4.8rem 6.4rem 6.4rem;
+    border-radius: 10px;
+    padding: 48px 64px 64px;
 }
 
 #lista h1 {
-    margin-bottom: 5rem;
+    margin-bottom: 60px;
     text-align: center;
 }
 
-#lista ul li {
-    margin-bottom: 1rem;
+.table thead{
+    text-align: center;
 }
 
-
-/* #option1{
-    background-color: red;
-    
-}
-
-#option2{
-    background-color: yellow;
-    
-}
-
-#option3{
-    background-color: green;
-    
-} */
 
 .fazer {
     color: red;
@@ -51,8 +35,16 @@ body {
 .andamento{
     color: yellow;
 }
-.Finalizado {
+.finalizado {
     color: green;
 }
+.editing{
+    background: #00000030;
+    
+}
+
+
+
+
 
 

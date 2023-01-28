@@ -8,11 +8,6 @@ new Vue({
             display: "none"
         },
         
-        styleOption: {
-            color: "",
-            
-        },
-        
         opcao: "",
         opcoes: [
             {opcao:"A fazer"},
@@ -20,13 +15,12 @@ new Vue({
             {opcao:"Finalizado"}
         ],
 
+        idEditar: -1,
         novaTarefa: "",  
         tarefas: [],
-
-        tarefaSelecionada: [],
     },
     methods: {
-        salvarTarefa(){
+        salvarTarefa(idTarefa){
             if (this.novaTarefa == "") {
                 alert("Por favor digite uma tarefa")
             } 
@@ -36,54 +30,34 @@ new Vue({
             else{
                 if (this.styleSelect.display == "none" ){
                     this.opcao = "A fazer"
-                    this.styleOption.color = "red"
                 }
-                else if(this.opcao == "Em andamento"){
-                    this.styleOption.color = "yellow"
-                }
-                else if(this.opcao == "Finalizado"){
-                    this.styleOption.color = "green"
-                }
-                
-                this.tarefas.push({id: id++, status: this.opcao, texto: this.novaTarefa})
+
+                var novaTarefa = this.novaTarefa
+                var novaOpcao = this.opcao
+
+                if(idTarefa != -1){
+                    this.tarefas.map(item => {
+                        if(item.id == idTarefa){
+                            item.status = novaOpcao
+                            item.texto = novaTarefa
+                            item.isEditing = false
+                        }
+                        return item
+                    }) 
+                }else{
+                    this.tarefas.push({id: id++, status: this.opcao, texto: this.novaTarefa, isEditing:false})
+                }               
+                this.idEditar = -1
             } 
             this.novaTarefa = ""
             this.styleSelect.display = "none"
         },
-
-        // colorOption(){
-        //     // for (var i = 0; i < this.tarefaSelecionada.length; i++){
-                
-        //     //     if (statusTarefa[i] == "A fazer"){
-        //     //         this.styleOption.color = "red"           
-        //     //     } 
-        //     //     if (statusTarefa[i] == "Em andamento"){
-        //     //         this.styleOption.color = "yellow" 
-        //     //     }
-        //     //     if (statusTarefa[i] == "Finalizado"){
-        //     //         this.styleOption.color = "green" 
-        //     //     }
-        //     // }
-        //      Sugestão
-        //     var statusTarefa = this.tarefaSelecionada.map(i => i.status)
-        //     if (statusTarefa == "A fazer") {
-        //         this.styleOption.color = "red"
-        //     }
-        //     if (statusTarefa == "Em andamento") {
-        //         this.styleOption.color = "yellow"
-        //     }
-        //     if (statusTarefa == "Finalizado") {
-        //         this.styleOption.color = "green"
-        //     }
-        // },
         
         editarTarefa(tarefa){
             this.styleSelect.display = "" 
             this.novaTarefa = tarefa.texto
-            this.tarefas = this.tarefas.filter(i => i !== tarefa)
-            
-
-            // this.tarefaSelecionada = tarefa
+            this.idEditar = tarefa.id
+            tarefa.isEditing = true
         },
 
         deletarTarefa(tarefa){
