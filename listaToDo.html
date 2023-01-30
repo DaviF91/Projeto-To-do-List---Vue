@@ -26,6 +26,8 @@
                 <option v-for="(opcao, index) in opcoes" :kei="opcao"  >{{opcao.opcao}}</option>
             </select>
 
+            <input type="date" v-model="dataTarefa"   class="form-control">
+
             <button @click="salvarTarefa(idEditar)" class="btn btn-outline-secondary" type="button" id="button-addon2">Salvar</button>
             
         </div>
@@ -35,9 +37,10 @@
         <table v-else class="table" >
             <thead>
                 <tr >
-                    <th scope="col">ID</th>
+                    <th scope="col">Item</th>
                     <th scope="col" >Status</th>
                     <th scope="col" >Descrição</th>
+                    <th scope="col" >Prazo da Tarefa</th>
                     <th scope="col" ></th>
                 </tr>
             </thead>
@@ -53,8 +56,11 @@
                     >
                         {{tarefa.status}}
                     </td>
-                    <td class="description">
+                    <td>
                         {{tarefa.texto}}
+                    </td>
+                    <td :class="{expirou: tarefa.data < dataAtual}" >
+                        {{tarefa.data}}
                     </td>
                     <td>
                         <button class="btn btn-warning" @click="editarTarefa(tarefa)" >Editar</button>   

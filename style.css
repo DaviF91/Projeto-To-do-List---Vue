@@ -36,11 +36,17 @@ body {
     color: yellow;
 }
 .finalizado {
-    color: green;
+    color:gray;
+    text-decoration: line-through;
+
 }
 .editing{
     background: #00000030;
     
+}
+
+.expirou{
+    color: red;
 }
 
 
