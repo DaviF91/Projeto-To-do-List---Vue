@@ -1,9 +1,6 @@
 
-
 let id = 0
-
 new Vue({
-    
     el:"#lista",
     data: {
         styleSelect: {
@@ -47,12 +44,12 @@ new Vue({
                             item.status = novaOpcao
                             item.texto = novaTarefa
                             item.data = novaData
-                            item.isEditing = false
+                            
                         }
                         return item
                     }) 
                 }else {
-                    this.tarefas.push({id: id++, status: this.opcao, texto: this.novaTarefa, data: this.dataTarefa , isEditing:false})
+                    this.tarefas.push({nivel: 0, id: id++, status: this.opcao, texto: this.novaTarefa, data: this.dataTarefa})
                 }               
                 this.idEditar = -1
             } 
@@ -60,13 +57,15 @@ new Vue({
             this.styleSelect.display = "none"
             this.dataVencimento()
             this.ordenarTarefas()
+            this.ordenaPorImportancia()
+            
         },
         
         editarTarefa(tarefa){
             this.styleSelect.display = "" 
             this.novaTarefa = tarefa.texto
             this.idEditar = tarefa.id
-            tarefa.isEditing = true
+            
         },
 
         deletarTarefa(tarefa){
@@ -88,17 +87,33 @@ new Vue({
             this.tarefas.sort((a,b)=>{
                 return a.status.localeCompare(b.status) //para strings utilizar .localeCompare
             });
-        }
-        
-        // formataData(){
-        //     let ano = this.dataTarefa[0] + this.dataTarefa[1] + this.dataTarefa[2] + this.dataTarefa[3]
-        //     let mes = this.dataTarefa[5] + this.dataTarefa[6]
-        //     let dia = this.dataTarefa[8] + this.dataTarefa[9]
-        //     this.dataTarefa = `${dia}-${mes}-${ano}`
-        //     console.log(this.dataTarefa)
-        //     // let data = this.dataTarefa
-        //     // this.dataTarefa = moment(data).format('DD/MM/YYYY')
+        },
 
-        // }
+
+        ativaDesativaImportancia(nivel, idTarefa){
+            if(idTarefa != -1){
+                this.tarefas.map(item => {
+                    if(nivel == 0 && item.id == idTarefa){
+                       return item.nivel= 1
+    
+                    }else if(nivel == 1 && item.id == idTarefa){
+                       return item.nivel=0
+                    }
+                
+                }) 
+            }
+            this.ordenaPorImportancia()
+        },
+        ordenaPorImportancia(){
+            this.tarefas.sort((a,b)=>{
+                if (a.nivel < b.nivel ) {
+                    return 1;
+                }
+                if (a.nivel > b.nivel) {
+                    return -1;
+                }
+            });
+            return 0;
+        }
     }
 })

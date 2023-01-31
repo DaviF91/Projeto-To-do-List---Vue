@@ -48,6 +48,21 @@ body {
     
 }
 
+.star svg:hover{
+    cursor: pointer;
+    transform: scale(1.3);
+
+}
+.ativaStar svg{
+    fill: yellow;
+}
+.desativaStar svg{
+    fill: white;
+}
+.starIcon{
+    display: none;
+}
+
 
 
 
