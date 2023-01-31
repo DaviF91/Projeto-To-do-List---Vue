@@ -85,16 +85,9 @@ new Vue({
         },
 
         ordenarTarefas(){
-            var ordena = this.tarefas
-            ordena.sort(function (a,b){
-                if (a.status > b.status) {
-                    return 1;
-                }
-                if (a.status < b.status) {
-                    return -1;
-                }
+            this.tarefas.sort((a,b)=>{
+                return a.status.localeCompare(b.status) //para strings utilizar .localeCompare
             });
-            return 0;
         }
         
         // formataData(){

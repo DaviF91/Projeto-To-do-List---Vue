@@ -35,19 +35,19 @@ body {
 .andamento{
     color: yellow;
 }
+
+.expirou{
+    color: red;
+}
 .finalizado {
     color:gray;
     text-decoration: line-through;
-
 }
 .editing{
     background: #00000030;
     
 }
 
-.expirou{
-    color: red;
-}
 
 
 

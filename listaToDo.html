@@ -56,10 +56,12 @@
                     >
                         {{tarefa.status}}
                     </td>
-                    <td>
+                    <td :class="{finalizado : tarefa.status=='Finalizado'}">
                         {{tarefa.texto}}
                     </td>
-                    <td :class="{expirou: tarefa.data < dataAtual}" >
+                    <td :class="{
+                        expirou: tarefa.data < dataAtual,
+                        finalizado : tarefa.status=='Finalizado'}" >
                         {{tarefa.data}}
                     </td>
                     <td>
