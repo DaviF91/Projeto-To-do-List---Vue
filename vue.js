@@ -1,10 +1,34 @@
+Vue.component('input-text-counter',{
+    props:["value"],
+
+    data: function(){
+        return {
+             
+        }
+    },
+    methods: {
+       
+    },
+    template:`
+            <div class="form-control"><input type="text"  
+                :value="value" 
+                @input="$emit('input', $event.target.value)"  
+                class="form-control" 
+                placeholder="Nome da tarefa"
+                maxlength="100"
+            ><span>{{value.length}}/100</span>
+            </div>
+    `
+})
+
 
 let id = 0
 new Vue({
     el:"#lista",
     data: {
         styleSelect: {
-            display: "none"
+            display: "none",
+            color:"#495057"
         },
         
         opcao: "",
@@ -13,7 +37,7 @@ new Vue({
             {opcao:"Em andamento"},
             {opcao:"Finalizado"}
         ],
-
+        
         idEditar: -1,
         novaTarefa: "",  
         tarefas: [],
@@ -33,11 +57,11 @@ new Vue({
                 if (this.styleSelect.display == "none" ){
                     this.opcao = "A fazer"
                 }
-
+                
                 var novaTarefa = this.novaTarefa
                 var novaOpcao = this.opcao
                 var novaData = this.dataTarefa
-
+                
                 if(idTarefa != -1){
                     this.tarefas.map(item => {
                         if(item.id == idTarefa){
@@ -49,7 +73,7 @@ new Vue({
                         return item
                     }) 
                 }else {
-                    this.tarefas.push({nivel: 0, id: id++, status: this.opcao, texto: this.novaTarefa, data: this.dataTarefa})
+                    this.tarefas.push({nivel: 0, id: id++, status: this.opcao, texto: this.novaTarefa, data:  this.dataTarefa})
                 }               
                 this.idEditar = -1
             } 
@@ -58,23 +82,21 @@ new Vue({
             this.dataVencimento()
             this.ordenarTarefas()
             this.ordenaPorImportancia()
-            
         },
         
         editarTarefa(tarefa){
             this.styleSelect.display = "" 
             this.novaTarefa = tarefa.texto
             this.idEditar = tarefa.id
-            
         },
-
+        
         deletarTarefa(tarefa){
             let valida = prompt("Deseja realmente deletar essa tarefa ?")
             if (valida == "Sim"){
                 this.tarefas = this.tarefas.filter(i => i !== tarefa)
             }
         },
-
+        
         dataVencimento(){
             let hoje = new Date()
             let dia = hoje.getDate().toString().padStart(2,'0')
@@ -82,7 +104,7 @@ new Vue({
             let ano = hoje.getFullYear()
             this.dataAtual = `${ano}-${mes}-${dia}` 
         },
-
+        
         ordenarTarefas(){
             this.tarefas.sort((a,b)=>{
                 return a.status.localeCompare(b.status) //para strings utilizar .localeCompare
@@ -94,22 +116,21 @@ new Vue({
             if(idTarefa != -1){
                 this.tarefas.map(item => {
                     if(nivel == 0 && item.id == idTarefa){
-                       return item.nivel= 1
-    
+                        return item.nivel= 1
+                        
                     }else if(nivel == 1 && item.id == idTarefa){
-                       return item.nivel=0
+                        return item.nivel=0
                     }
-                
                 }) 
             }
             this.ordenaPorImportancia()
         },
         ordenaPorImportancia(){
             this.tarefas.sort((a,b)=>{
-                if (a.nivel < b.nivel ) {
+                if (a.nivel < b.nivel && a.status != "Finalizado" ) {
                     return 1;
                 }
-                if (a.nivel > b.nivel) {
+                if (a.nivel > b.nivel && a.status != "Finalizado") {
                     return -1;
                 }
             });
