@@ -51,6 +51,9 @@ body {
     color: #495057;
     font-size: 15px;
 }
+.template select:hover{
+    cursor: pointer;
+}
 
 
 .template2{
@@ -73,12 +76,6 @@ body {
     /* font-size: 18px; */
 }
 
-.template2 input:hover{
-    cursor: pointer;
-    border-color: #be1010f6;    
-
-}
-
 .selectStatus{
     border: none;
     border-radius: 8px;
@@ -88,6 +85,10 @@ body {
     margin-left: 5px;
     height: 52px;
     font-size: 17px;
+}
+
+.selectStatus:hover{
+    cursor: pointer;
 }
 
 
@@ -103,9 +104,13 @@ body {
     
 }
 
+.inputData:hover{
+    cursor: pointer;
+}
+
 .btn-primary {
     margin-left: 5px;
-    height: 60px;
+    height: 52px;
 }
 
 
@@ -161,11 +166,5 @@ body {
     padding-bottom: 20px;
 }
 
-.npass {
-    color: green;
-}
-.fals {
-    color: red;
-}
 
 
