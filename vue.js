@@ -3,6 +3,7 @@ Vue.component('input-text-counter',{
 
     data: function(){
         return {
+            limitarCaracter: ""
              
         }
     },
@@ -10,13 +11,19 @@ Vue.component('input-text-counter',{
        
     },
     template:`
-            <div class="form-control"><input type="text"  
-                :value="value" 
-                @input="$emit('input', $event.target.value)"  
-                class="form-control" 
-                placeholder="Nome da tarefa"
-                maxlength="100"
-            ><span>{{value.length}}/100</span>
+            <div class="form-control">
+                <label for="">Limitar caracteres:</label>
+                <select name="" >
+                    <option value="false">Não</option>
+                    <option value="true">Sim</option>
+                </select>
+                <input type="text"  
+                    :value="value" 
+                    @input="$emit('input', $event.target.value)"  
+                    class="form-control" 
+                    placeholder="Nome da tarefa"
+                    maxlength="100"
+                ><span>{{value.length}}/100</span>
             </div>
     `
 })
