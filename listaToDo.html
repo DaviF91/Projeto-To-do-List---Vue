@@ -14,22 +14,22 @@
 <body>
     <div id="lista">
         <h1>Lista de Tarefas</h1>
-        <div class="input-group mb-3">
+        <div class="cabecalho">
             <!-- <input type="text" v-model="novaTarefa" class="form-control" placeholder="Nome da tarefa"  > -->
             <input-text-counter class="templateInput" v-model="novaTarefa" ></input-text-counter>
 
             <select :style="styleSelect"
                     name="select" 
-                    class="form-select form-select-sm" 
+                    class="selectStatus" 
                     aria-label=".form-select-sm example"
                     v-model="opcao"
                 >
                 <option v-for="(opcao, index) in opcoes" :kei="opcao"  >{{opcao.opcao}}</option>
             </select>
 
-            <input type="date" v-model="dataTarefa"   class="form-control">
+            <input type="date" v-model="dataTarefa" class="inputData"   >
 
-            <button @click="salvarTarefa(idEditar)" class="btn btn-outline-secondary" type="button" id="button-addon2">Salvar</button>
+            <button @click="salvarTarefa(idEditar)" class="btn btn-primary" type="button" id="button-addon2">Salvar</button>
             
         </div>
 

@@ -3,27 +3,43 @@ Vue.component('input-text-counter',{
 
     data: function(){
         return {
-            limitarCaracter: ""
+            limitarCaracter: "",
+            
              
         }
     },
     methods: {
+        
        
     },
     template:`
-            <div class="form-control">
-                <label for="">Limitar caracteres:</label>
-                <select name="" >
-                    <option value="false">Não</option>
-                    <option value="true">Sim</option>
-                </select>
-                <input type="text"  
-                    :value="value" 
-                    @input="$emit('input', $event.target.value)"  
-                    class="form-control" 
-                    placeholder="Nome da tarefa"
-                    maxlength="100"
-                ><span>{{value.length}}/100</span>
+            <div>
+                <div class="template">
+                    <label for="">Limitar descrição: </label>
+                    <select name="" v-model="limitarCaracter">
+                        <option value="false">Não</option>
+                        <option value="true">Sim</option>
+                    </select>
+                </div>
+                <div v-if="limitarCaracter == 'true'" class="template2">
+                    <input type="text"  
+                        :value="value" 
+                        @input="$emit('input', $event.target.value)"  
+                        placeholder="Nome da tarefa"
+                        maxlength="100"
+                    ><span>{{value.length}}/100</span>
+                </div>
+                <div v-else class="template2">
+                    <input type="text"  
+                        :value="value" 
+                        @input="$emit('input', $event.target.value)"  
+                        placeholder="Nome da tarefa"
+                        maxlength=""
+                    >
+                    <span :style="cor"> 
+                        {{value.length}}/100
+                    </span>
+                </div>
             </div>
     `
 })

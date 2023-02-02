@@ -24,6 +24,92 @@ body {
     text-align: center;
 }
 
+.cabecalho{
+    display: flex;
+}
+
+.template{
+    display: inline-grid;
+    align-content: center;
+    align-items: center;
+    background: #ffffff;
+    border-radius: 8px;
+    height: 52px;
+    width: 38%;
+    color: #495057;
+    
+    
+}
+
+.template label{
+    font-size: 12px;
+    font-weight: bold;
+}
+.template select{
+    width: 100%;
+    border: none;
+    color: #495057;
+    font-size: 15px;
+}
+
+
+.template2{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    background: #ffffff;
+    border-radius: 8px;
+    height: 52px;
+    width: 100%;
+    gap:10px;
+    color: #495057;
+    font-size: 17px;
+}
+
+.template2 input{
+    width: 100%;
+    border: none;
+    height: 40px;
+    /* font-size: 18px; */
+}
+
+.template2 input:hover{
+    cursor: pointer;
+    border-color: #be1010f6;    
+
+}
+
+.selectStatus{
+    border: none;
+    border-radius: 8px;
+    color: #495057;
+    width: 32%;
+    text-align: center;
+    margin-left: 5px;
+    height: 52px;
+    font-size: 17px;
+}
+
+
+.inputData{
+    margin-left: 5px;
+    border: none;
+    border-radius: 8px;
+    color: #495057;
+    width: 33%;
+    text-align: center;
+    height: 52px;
+    font-size: 17px;
+    
+}
+
+.btn-primary {
+    margin-left: 5px;
+    height: 60px;
+}
+
+
+
 .table thead, tbody{
     text-align: center;
 }
@@ -69,22 +155,17 @@ body {
 
 .templateInput{
     display: flex;
-    gap: 10px;
+    gap: 5px;
     align-items: center;
-}
-/* .templateInput span{
-    color: #495057;
-} */
-
-.form-control {
-    color: #495057 ;
+    width: 100%;
+    padding-bottom: 20px;
 }
 
-
-
-
-
-
-
+.npass {
+    color: green;
+}
+.fals {
+    color: red;
+}
 
 
