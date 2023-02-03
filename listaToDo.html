@@ -26,7 +26,7 @@
                 >
                 <option v-for="(opcao, index) in opcoes" :kei="opcao"  >{{opcao.opcao}}</option>
             </select>
-
+            
             <input type="date" v-model="dataTarefa" class="inputData"   >
 
             <button @click="salvarTarefa(idEditar)" class="btn btn-primary" type="button" id="button-addon2">Salvar</button>

@@ -166,12 +166,14 @@ body {
     padding-bottom: 20px;
 }
 
-
-.aceito{
+.valorPadrao{
+    color: #495057;
+}
+.valorAceito{
     color:  #089e21;
     
     
 }
-.naoAceito{
+.valorNaoAceito{
     color: #c51d07;
 }
