@@ -4,6 +4,10 @@ Vue.component('input-text-counter',{
     data: function(){
         return {
             limitarCaracter: "",
+            limitar: [
+                {selecione: "Não"},
+                {selecione: "Sim"}
+            ]
             
              
         }
@@ -17,17 +21,18 @@ Vue.component('input-text-counter',{
                 <div class="template">
                     <label for="">Limitar descrição: </label>
                     <select name="" v-model="limitarCaracter">
-                        <option value="false">Não</option>
-                        <option value="true">Sim</option>
+                        <option v-for="(opcao,index) in limitar" :key="opcao">{{opcao.selecione}}</option>
                     </select>
                 </div>
-                <div v-if="limitarCaracter == 'true'" class="template2">
+                <div v-if="limitarCaracter == 'Sim'" class="template2">
                     <input type="text"  
                         :value="value" 
                         @input="$emit('input', $event.target.value)"  
                         placeholder="Nome da tarefa"
                         maxlength="100"
-                    ><span>{{value.length}}/100</span>
+                    ><span :class="{aceito: value.length <= 100, naoAceito: value.length > 100}">
+                        {{value.length}}/100
+                    </span>
                 </div>
                 <div v-else class="template2">
                     <input type="text"  
@@ -36,7 +41,7 @@ Vue.component('input-text-counter',{
                         placeholder="Nome da tarefa"
                         maxlength=""
                     >
-                    <span :style="cor"> 
+                    <span :class="{aceito: value.length <= 100, naoAceito: value.length > 100}"> 
                         {{value.length}}/100
                     </span>
                 </div>
@@ -73,9 +78,9 @@ new Vue({
             if (this.novaTarefa == "") {
                 alert("Por favor digite uma tarefa")
             } 
-            else if (this.novaTarefa.length > 100) {
-                alert ("A tarefa não pode ter mais que 100 caracteres")
-            } 
+            // else if (this.novaTarefa.length > 100) {
+            //     alert ("A tarefa não pode ter mais que 100 caracteres")
+            // } 
             else{
                 if (this.styleSelect.display == "none" ){
                     this.opcao = "A fazer"

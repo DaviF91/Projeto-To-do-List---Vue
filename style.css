@@ -73,7 +73,7 @@ body {
     width: 100%;
     border: none;
     height: 40px;
-    /* font-size: 18px; */
+    
 }
 
 .selectStatus{
@@ -167,4 +167,11 @@ body {
 }
 
 
-
+.aceito{
+    color:  #089e21;
+    
+    
+}
+.naoAceito{
+    color: #c51d07;
+}
