@@ -26,6 +26,34 @@ body {
 
 .cabecalho{
     display: flex;
+    
+    background-color: #cbcecc79;
+    border-radius: 8px;
+    height: 35px;
+}
+
+.labelCheckbox{
+    display: flex;
+    font-size: 15px;
+    white-space: nowrap;
+    align-items: center;
+    text-align: center;
+    background-color: #ffffff;
+    height: 35px;
+    border-radius: 8px 8px 8px 8px;
+    gap: 2px;
+    color: #495057;
+}
+
+.labelCheckbox input{
+    cursor: pointer;
+}
+
+.labelCheckbox select{
+    border: none;
+    font-size: 15px;
+    appearance: none;
+    color: #495057;
 }
 
 .template{
@@ -33,28 +61,11 @@ body {
     align-content: center;
     align-items: center;
     background: #ffffff;
-    border-radius: 8px;
-    height: 52px;
-    width: 38%;
+    border-radius: 0 8px 8px 0px;
+    height: 35px;
+    width: 15%;
     color: #495057;
-    
-    
 }
-
-.template label{
-    font-size: 12px;
-    font-weight: bold;
-}
-.template select{
-    width: 100%;
-    border: none;
-    color: #495057;
-    font-size: 15px;
-}
-.template select:hover{
-    cursor: pointer;
-}
-
 
 .template2{
     display: flex;
@@ -62,17 +73,18 @@ body {
     align-items: center;
     background: #ffffff;
     border-radius: 8px;
-    height: 52px;
+    height: 35px;
     width: 100%;
     gap:10px;
     color: #495057;
-    font-size: 17px;
+    font-size: 15px;
 }
 
 .template2 input{
     width: 100%;
     border: none;
-    height: 40px;
+    height: 26px;
+    text-indent: 8px;
     
 }
 
@@ -83,8 +95,8 @@ body {
     width: 32%;
     text-align: center;
     margin-left: 5px;
-    height: 52px;
-    font-size: 17px;
+    height: 35px;
+    font-size: 15px;
 }
 
 .selectStatus:hover{
@@ -97,10 +109,10 @@ body {
     border: none;
     border-radius: 8px;
     color: #495057;
-    width: 33%;
+    width: 30%;
     text-align: center;
-    height: 52px;
-    font-size: 17px;
+    height: 35px;
+    font-size: 15px;
     
 }
 
@@ -110,9 +122,12 @@ body {
 
 .btn-primary {
     margin-left: 5px;
-    height: 52px;
+    height: 35px;
 }
 
+.table{
+    margin-top: 18px;
+}
 
 
 .table thead, tbody{
@@ -121,6 +136,13 @@ body {
 
 #descricao {
     text-align: left;
+}
+
+.semTarefas{
+    margin-top: 30px;
+    text-align: center;
+    color: #495057;
+    font-style:italic;
 }
 
 
@@ -163,7 +185,7 @@ body {
     gap: 5px;
     align-items: center;
     width: 100%;
-    padding-bottom: 20px;
+    
 }
 
 .valorPadrao{

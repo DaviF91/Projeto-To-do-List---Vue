@@ -5,28 +5,40 @@ Vue.component('input-text-counter',{
         return {
             limitarCaracter: "",
             limitar: [
-                {selecione: "Sim"},
-                {selecione: "Não"}
+                {selecione: "Não"},
+                {selecione: "Sim"}
             ]
             
              
         }
     },
     methods: {
+        setarOpção(){
+            if(this.limitarCaracter == ""){
+                limitarCaracter = "Sim"
+            }
+        },
+        ativaLimeteCaracter(){
+            if(this.limitarCaracter == "" || this.limitarCaracter == "Não" ){
+                this.limitarCaracter = "Sim"
+            } else if (this.limitarCaracter == "Sim"){
+                this.limitarCaracter = "Não"
+            }
+        }
            
     },
     template:`
             <div>
-                <input type="checkbox" name="" id="">
-                <div class="template">
-                    <label for="">Limitar descrição: </label>
+                <div class="labelCheckbox" >
+                    <input type="checkbox"  @click="ativaLimeteCaracter()">
+                    <label for="" >Limitar descrição:  </label>
                     <select name="limitarCaracter"  v-model="limitarCaracter">
-                        <option disabled value="" >Selecione</option>
-                        <option v-for="(opcao,index) in limitar" :key="opcao" >{{opcao.selecione}}</option>
+                        <option v-for="(opcao,index) in limitar" :key="opcao" disabled >{{opcao.selecione}}</option>
                     </select>
                 </div>
                 <div v-if="limitarCaracter == 'Sim'" class="template2">
-                    <input type="text"  
+                    <input 
+                        type="text"  
                         :value="value" 
                         @input="$emit('input', $event.target.value)"  
                         placeholder="Nome da tarefa"
@@ -79,10 +91,7 @@ new Vue({
         salvarTarefa(idTarefa){
             if (this.novaTarefa == "") {
                 alert("Por favor digite uma tarefa")
-            } 
-            // else if (this.novaTarefa.length > 100) {
-            //     alert ("A tarefa não pode ter mais que 100 caracteres")
-            // } 
+            }  
             else{
                 if (this.styleSelect.display == "none" ){
                     this.opcao = "A fazer"
