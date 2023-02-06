@@ -13,11 +13,6 @@ Vue.component('input-text-counter',{
         }
     },
     methods: {
-        setarOpção(){
-            if(this.limitarCaracter == ""){
-                limitarCaracter = "Sim"
-            }
-        },
         ativaLimeteCaracter(){
             if(this.limitarCaracter == "" || this.limitarCaracter == "Não" ){
                 this.limitarCaracter = "Sim"
@@ -33,7 +28,7 @@ Vue.component('input-text-counter',{
                     <input type="checkbox"  @click="ativaLimeteCaracter()">
                     <label for="" >Limitar descrição:  </label>
                     <select name="limitarCaracter"  v-model="limitarCaracter">
-                        <option v-for="(opcao,index) in limitar" :key="opcao" disabled >{{opcao.selecione}}</option>
+                        <option v-for="(item,index) in limitar" :key="item.index" disabled >{{item.selecione}}</option>
                     </select>
                 </div>
                 <div v-if="limitarCaracter == 'Sim'" class="template2">
@@ -86,6 +81,8 @@ new Vue({
         
         dataTarefa: "",
         dataAtual:"",
+
+        comparaData:""
     },
     methods: {
         salvarTarefa(idTarefa){
@@ -151,13 +148,15 @@ new Vue({
             // let mes = String(hoje.getMonth() + 1).padStart(2,'0')
             // let ano = hoje.getFullYear()
             // this.dataAtual = `${dia}/${mes}/${ano}` 
-            this.dataAtual = hoje.toLocaleDateString('pt-BR', {timeZone: 'UTC'})
+            return this.dataAtual = hoje.toLocaleDateString('pt-BR', {timeZone: 'UTC'})
+            
             
         },
+
         
         ordenarTarefas(){
             this.tarefas.sort((a,b)=>{
-                return a.status.localeCompare(b.status) //para strings utilizar .localeCompare
+                return a.status.localeCompare(b.status)
             });
         },
 

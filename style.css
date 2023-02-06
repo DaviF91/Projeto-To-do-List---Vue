@@ -22,6 +22,7 @@ body {
 #lista h1 {
     margin-bottom: 60px;
     text-align: center;
+    font-style: italic;
 }
 
 .cabecalho{
@@ -47,6 +48,7 @@ body {
 
 .labelCheckbox input{
     cursor: pointer;
+
 }
 
 .labelCheckbox select{
@@ -199,3 +201,4 @@ body {
 .valorNaoAceito{
     color: #c51d07;
 }
+
