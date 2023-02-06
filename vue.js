@@ -113,6 +113,7 @@ new Vue({
                 }               
                 this.idEditar = -1
             } 
+            this.dataTarefa = ""
             this.novaTarefa = ""
             this.styleSelect.display = "none"
             this.dataVencimento()
@@ -123,6 +124,7 @@ new Vue({
         editarTarefa(tarefa){
             this.styleSelect.display = "" 
             this.novaTarefa = tarefa.texto
+            this.dataTarefa = tarefa.data
             this.idEditar = tarefa.id
         },
         
@@ -149,8 +151,6 @@ new Vue({
             // let ano = hoje.getFullYear()
             // this.dataAtual = `${dia}/${mes}/${ano}` 
             return this.dataAtual = hoje.toLocaleDateString('pt-BR', {timeZone: 'UTC'})
-            
-            
         },
 
         
