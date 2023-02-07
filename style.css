@@ -86,9 +86,10 @@ body {
 
 .template2 input{
     width: 100%;
-    border: none;
-    height: 26px;
+    height: 35px;
     text-indent: 8px;
+    border: 1px solid #ffffff;
+    border-radius: 8px;
     
 }
 
@@ -202,3 +203,6 @@ body {
     color: #c51d07e7;
 }
 
+input:invalid {
+    border: 1px solid red
+  } 

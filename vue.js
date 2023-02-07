@@ -41,6 +41,7 @@ Vue.component('input-text-counter',{
                     @input="$emit('input', $event.target.value)"  
                     placeholder="Nome da tarefa"
                     maxlength="100"
+                    required
                 >
 
                 <span :class="{
@@ -58,6 +59,7 @@ Vue.component('input-text-counter',{
                     @input="$emit('input', $event.target.value)"  
                     placeholder="Nome da tarefa"
                     maxlength=""
+                    required 
                 >
                 <span :class="{
                         valorAceito: value.length <= 100 && value.length >0,
@@ -77,7 +79,7 @@ new Vue({
     data: {
         styleSelect: {
             display: "none",
-            color:"#495057"
+            color:"#787c80"
         },
         
         opcao: "",
@@ -99,7 +101,7 @@ new Vue({
     methods: {
         salvarTarefa(idTarefa){
             if (this.novaTarefa == "") {
-                alert("Por favor digite uma tarefa")
+                alert("Por favor digite o nome tarefa")
             }  
             else{
                 if (this.styleSelect.display == "none" ){
@@ -137,6 +139,7 @@ new Vue({
             this.styleSelect.display = "" 
             this.novaTarefa = tarefa.texto
             this.idEditar = tarefa.id
+            
         },
         
         deletarTarefa(tarefa){
@@ -160,13 +163,11 @@ new Vue({
             return this.dataAtual = hoje.toLocaleDateString('pt-BR', {timeZone: 'UTC'})
         },
 
-        
         ordenarTarefas(){
             this.tarefas.sort((a,b)=>{
                 return a.status.localeCompare(b.status)
             });
         },
-
 
         ativaDesativaImportancia(nivel, idTarefa){
             if(idTarefa != -1){
