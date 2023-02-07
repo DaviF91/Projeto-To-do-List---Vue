@@ -202,7 +202,3 @@ body {
 .valorNaoAceito{
     color: #c51d07e7;
 }
-
-input:invalid {
-    border: 1px solid red
-  } 

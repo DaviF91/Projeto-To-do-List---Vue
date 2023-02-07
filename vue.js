@@ -20,7 +20,7 @@ Vue.component('input-text-counter',{
                 this.limitarCaracter = "Não"
             }
         }
-           
+          
     },
     template:`
         <div>
@@ -41,7 +41,7 @@ Vue.component('input-text-counter',{
                     @input="$emit('input', $event.target.value)"  
                     placeholder="Nome da tarefa"
                     maxlength="100"
-                    required
+                    
                 >
 
                 <span :class="{
@@ -59,7 +59,7 @@ Vue.component('input-text-counter',{
                     @input="$emit('input', $event.target.value)"  
                     placeholder="Nome da tarefa"
                     maxlength=""
-                    required 
+                     
                 >
                 <span :class="{
                         valorAceito: value.length <= 100 && value.length >0,
