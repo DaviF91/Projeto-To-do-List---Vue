@@ -5,16 +5,16 @@
 }
 
 body {
-    background: #ffffff;
+    background: #8fb0bed8;
     font-size: 20px;
     display: grid;
     place-items: center;
     height: 100vh;
-    
+    width: 100vw;
 }
 
 #lista {
-    background: linear-gradient(287.56deg, #c6d4db 0%, #7fa7e7 100%);;
+    background: linear-gradient(287.56deg, #c6d4db 0%, #7fa7e7 100%);
     border-radius: 10px;
     padding: 48px 64px 64px;
 }
@@ -23,6 +23,7 @@ body {
     margin-bottom: 60px;
     text-align: center;
     font-style: italic;
+    color: #475e64;
 }
 
 .cabecalho{
@@ -43,11 +44,12 @@ body {
     height: 35px;
     border-radius: 8px 8px 8px 8px;
     gap: 2px;
-    color: #495057;
+    color: #787c80;
 }
 
 .labelCheckbox input{
     cursor: pointer;
+    
 
 }
 
@@ -55,7 +57,7 @@ body {
     border: none;
     font-size: 15px;
     appearance: none;
-    color: #495057;
+    color: #787c80;
 }
 
 .template{
@@ -66,7 +68,7 @@ body {
     border-radius: 0 8px 8px 0px;
     height: 35px;
     width: 15%;
-    color: #495057;
+    color: #787c80;
 }
 
 .template2{
@@ -78,7 +80,7 @@ body {
     height: 35px;
     width: 100%;
     gap:10px;
-    color: #495057;
+    color: #787c80;
     font-size: 15px;
 }
 
@@ -110,7 +112,7 @@ body {
     margin-left: 5px;
     border: none;
     border-radius: 8px;
-    color: #495057;
+    color: #787c80;
     width: 30%;
     text-align: center;
     height: 35px;
@@ -129,11 +131,14 @@ body {
 
 .table{
     margin-top: 18px;
+    border-radius: 8px;
+    background-color: #cbcecc79;
 }
 
 
 .table thead, tbody{
     text-align: center;
+    color: #475e64;
 }
 
 #descricao {
@@ -143,7 +148,7 @@ body {
 .semTarefas{
     margin-top: 30px;
     text-align: center;
-    color: #495057;
+    color: #475e64;
     font-style:italic;
 }
 
@@ -163,14 +168,12 @@ body {
     text-decoration: line-through;
 }
 .editing{
-    background: #00000030;
-    
+    background: #7a78787e;
 }
 
 .star svg:hover{
     cursor: pointer;
     transform: scale(1.3);
-
 }
 .ativaStar svg{
     fill: yellow;
@@ -186,19 +189,16 @@ body {
     display: flex;
     gap: 5px;
     align-items: center;
-    width: 100%;
-    
+    width: 100%; 
 }
 
 .valorPadrao{
-    color: #495057;
+    color: #787c80;
 }
 .valorAceito{
-    color:  #089e21;
-    
-    
+    color:  #05941ce1; 
 }
 .valorNaoAceito{
-    color: #c51d07;
+    color: #c51d07e7;
 }
 

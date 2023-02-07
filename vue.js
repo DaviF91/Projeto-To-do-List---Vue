@@ -3,7 +3,7 @@ Vue.component('input-text-counter',{
 
     data: function(){
         return {
-            limitarCaracter: "",
+            limitarCaracter: "Não",
             limitar: [
                 {selecione: "Não"},
                 {selecione: "Sim"}
@@ -14,7 +14,7 @@ Vue.component('input-text-counter',{
     },
     methods: {
         ativaLimeteCaracter(){
-            if(this.limitarCaracter == "" || this.limitarCaracter == "Não" ){
+            if(this.limitarCaracter == "Não" ){
                 this.limitarCaracter = "Sim"
             } else if (this.limitarCaracter == "Sim"){
                 this.limitarCaracter = "Não"
@@ -23,38 +23,50 @@ Vue.component('input-text-counter',{
            
     },
     template:`
-            <div>
-                <div class="labelCheckbox" >
-                    <input type="checkbox"  @click="ativaLimeteCaracter()">
-                    <label for="" >Limitar descrição:  </label>
-                    <select name="limitarCaracter"  v-model="limitarCaracter">
-                        <option v-for="(item,index) in limitar" :key="item.index" disabled >{{item.selecione}}</option>
-                    </select>
-                </div>
-                <div v-if="limitarCaracter == 'Sim'" class="template2">
-                    <input 
-                        type="text"  
-                        :value="value" 
-                        @input="$emit('input', $event.target.value)"  
-                        placeholder="Nome da tarefa"
-                        maxlength="100"
-                    >
-                    <span :class="{valorAceito: value.length <= 100 && value.length >0  , valorNaoAceito: value.length > 100, valorPadrao: value.length == 0}">
-                        {{value.length}}/100
-                    </span>
-                </div>
-                <div v-else class="template2">
-                    <input type="text"  
-                        :value="value" 
-                        @input="$emit('input', $event.target.value)"  
-                        placeholder="Nome da tarefa"
-                        maxlength=""
-                    >
-                    <span :class="{valorAceito: value.length <= 100 && value.length >0 , valorNaoAceito: value.length > 100, valorPadrao: value.length == 0}"> 
-                        {{value.length}}/100
-                    </span>
-                </div>
+        <div>
+            <div class="labelCheckbox" >
+                <input type="checkbox"  @click="ativaLimeteCaracter()">
+
+                <label for="" >Limitar descrição:  </label>
+
+                <select name="limitarCaracter"  v-model="limitarCaracter">
+                    <option v-for="(item,index) in limitar" :key="item.index" disabled >{{item.selecione}}</option>
+                </select>
             </div>
+
+            <div v-if="limitarCaracter == 'Sim'" class="template2">
+                <input 
+                    type="text"  
+                    :value="value" 
+                    @input="$emit('input', $event.target.value)"  
+                    placeholder="Nome da tarefa"
+                    maxlength="100"
+                >
+
+                <span :class="{
+                        valorAceito: value.length <= 100 && value.length >0,
+                        valorNaoAceito: value.length > 100,
+                        valorPadrao: value.length == 0}">
+                    {{value.length}}/100
+                </span>
+
+            </div>
+
+            <div v-else class="template2">
+                <input type="text"  
+                    :value="value" 
+                    @input="$emit('input', $event.target.value)"  
+                    placeholder="Nome da tarefa"
+                    maxlength=""
+                >
+                <span :class="{
+                        valorAceito: value.length <= 100 && value.length >0,
+                        valorNaoAceito: value.length > 100,
+                        valorPadrao: value.length == 0}"> 
+                    {{value.length}}/100
+                </span>
+            </div>
+        </div>
     `
 })
 
@@ -124,7 +136,6 @@ new Vue({
         editarTarefa(tarefa){
             this.styleSelect.display = "" 
             this.novaTarefa = tarefa.texto
-            this.dataTarefa = tarefa.data
             this.idEditar = tarefa.id
         },
         
@@ -146,10 +157,6 @@ new Vue({
         
         dataVencimento(){
             let hoje = new Date()
-            // let dia = hoje.getDate().toString().padStart(2,'0')
-            // let mes = String(hoje.getMonth() + 1).padStart(2,'0')
-            // let ano = hoje.getFullYear()
-            // this.dataAtual = `${dia}/${mes}/${ano}` 
             return this.dataAtual = hoje.toLocaleDateString('pt-BR', {timeZone: 'UTC'})
         },
 
@@ -165,15 +172,16 @@ new Vue({
             if(idTarefa != -1){
                 this.tarefas.map(item => {
                     if(nivel == 0 && item.id == idTarefa){
-                        return item.nivel= 1
-                        
-                    }else if(nivel == 1 && item.id == idTarefa){
+                        return item.nivel= 1  
+                    }
+                    else if(nivel == 1 && item.id == idTarefa){
                         return item.nivel=0
                     }
                 }) 
             }
             this.ordenaPorImportancia()
         },
+
         ordenaPorImportancia(){
             this.tarefas.sort((a,b)=>{
                 if (a.nivel < b.nivel && a.status != "Finalizado" ) {
@@ -182,7 +190,7 @@ new Vue({
                 if (a.nivel > b.nivel && a.status != "Finalizado") {
                     return -1;
                 }
-            });
+            })
             return 0;
         }
     }
