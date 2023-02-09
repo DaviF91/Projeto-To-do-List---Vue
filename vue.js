@@ -1,41 +1,57 @@
+Vue.component('input-checkbox', {
+    data: function(){
+        return {
+            
+        }
+
+    },
+   
+    methods: {
+        ativaLimeteCaracter(){
+            if(temp.limitarCaracter == false ){
+                temp.limitarCaracter= true
+            } else if (temp.limitarCaracter== true){
+                temp.limitarCaracter= false
+            }
+            
+            // this.valorLimite = this.value
+            // console.log(temp.limitarCaracter )
+        }
+    },
+    template:`
+        <div class="labelCheckbox" >
+            <input   type="checkbox"  @click="ativaLimeteCaracter()">
+            <label for="" >Limitar descrição</label>
+        </div>`
+})
+
+
 Vue.component('input-text-counter',{
-    props:["value"],
+    props:["value", "ativarLimite"],
 
     data: function(){
         return {
-            limitarCaracter: "Não",
-            limitar: [
-                {selecione: "Não"},
-                {selecione: "Sim"}
-            ]
-            
-             
+            limite:""
         }
+
     },
-    methods: {
-        ativaLimeteCaracter(){
-            if(this.limitarCaracter == "Não" ){
-                this.limitarCaracter = "Sim"
-            } else if (this.limitarCaracter == "Sim"){
-                this.limitarCaracter = "Não"
+
+    methods:{
+        ativar(){
+            if(temp.limitarCaracter == true){
+                this.ativarLimite = true
+            } else {
+                this.ativarLimite = false
             }
         }
-          
     },
+    
     template:`
         <div>
-            <div class="labelCheckbox" >
-                <input type="checkbox"  @click="ativaLimeteCaracter()">
 
-                <label for="" >Limitar descrição:  </label>
-
-                <select name="limitarCaracter"  v-model="limitarCaracter">
-                    <option v-for="(item,index) in limitar" :key="item.index" disabled >{{item.selecione}}</option>
-                </select>
-            </div>
-
-            <div v-if="limitarCaracter == 'Sim'" class="template2">
+            <div   v-if="ativarLimite == true" class="template2">
                 <input 
+                    
                     type="text"  
                     :value="value" 
                     @input="$emit('input', $event.target.value)"  
@@ -74,8 +90,9 @@ Vue.component('input-text-counter',{
 
 
 let id = 0
-new Vue({
+var temp = new Vue({
     el:"#lista",
+
     data: {
         styleSelect: {
             display: "none",
@@ -96,10 +113,14 @@ new Vue({
         dataTarefa: "",
         dataAtual:"",
 
-        comparaData:""
+        comparaData:"",
+
+       limitarCaracter:""
     },
     methods: {
         salvarTarefa(idTarefa){
+            console.log(this.limitarCaracter)
+
             if (this.novaTarefa == "") {
                 alert("Por favor digite o nome tarefa")
             }  

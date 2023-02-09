@@ -35,13 +35,17 @@ body {
 }
 
 .labelCheckbox{
+    position:initial;
+    width: fit-content;
+    margin-bottom: 30px;
+
     display: flex;
     font-size: 15px;
     white-space: nowrap;
     align-items: center;
     text-align: center;
-    background-color: #ffffff;
-    height: 35px;
+    /* background-color: #ffffff; */
+    /* height: 35px; */
     border-radius: 8px 8px 8px 8px;
     gap: 2px;
     color: #787c80;
@@ -60,7 +64,7 @@ body {
     color: #787c80;
 }
 
-.template{
+/* .template{
     display: inline-grid;
     align-content: center;
     align-items: center;
@@ -69,7 +73,7 @@ body {
     height: 35px;
     width: 15%;
     color: #787c80;
-}
+} */
 
 .template2{
     display: flex;
@@ -97,7 +101,7 @@ body {
     border: none;
     border-radius: 8px;
     color: #495057;
-    width: 32%;
+    width: 48%;
     text-align: center;
     margin-left: 5px;
     height: 35px;
@@ -114,7 +118,7 @@ body {
     border: none;
     border-radius: 8px;
     color: #787c80;
-    width: 30%;
+    width: 45%;
     text-align: center;
     height: 35px;
     font-size: 15px;
