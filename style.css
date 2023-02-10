@@ -38,42 +38,27 @@ body {
     position:initial;
     width: fit-content;
     margin-bottom: 30px;
-
     display: flex;
     font-size: 15px;
     white-space: nowrap;
     align-items: center;
     text-align: center;
-    /* background-color: #ffffff; */
-    /* height: 35px; */
     border-radius: 8px 8px 8px 8px;
-    gap: 2px;
-    color: #787c80;
+    gap: 3px;
+    color: #475e64;
+    font-style: italic;
+    
 }
 
 .labelCheckbox input{
     cursor: pointer;
-    
-
 }
 
-.labelCheckbox select{
-    border: none;
-    font-size: 15px;
-    appearance: none;
-    color: #787c80;
-}
 
-/* .template{
-    display: inline-grid;
-    align-content: center;
-    align-items: center;
-    background: #ffffff;
-    border-radius: 0 8px 8px 0px;
-    height: 35px;
-    width: 15%;
-    color: #787c80;
-} */
+.form-check-input{
+    width: 13px;
+    height: 13px;
+}
 
 .template2{
     display: flex;
@@ -206,3 +191,4 @@ body {
 .valorNaoAceito{
     color: #c51d07e7;
 }
+

@@ -15,72 +15,52 @@ Vue.component('input-checkbox', {
             }
             
             // this.valorLimite = this.value
-            // console.log(temp.limitarCaracter )
+            console.log(temp.limitarCaracter )
         }
     },
     template:`
         <div class="labelCheckbox" >
-            <input   type="checkbox"  @click="ativaLimeteCaracter()">
+            <input   type="checkbox"  @click="ativaLimeteCaracter()" class="form-check-input">
             <label for="" >Limitar descrição</label>
         </div>`
 })
 
-
 Vue.component('input-text-counter',{
-    props:["value", "ativarLimite"],
+    props:["value", "ativar"],
 
-    data: function(){
-        return {
-            limite:""
-        }
-
-    },
-
-    methods:{
-        ativar(){
-            if(temp.limitarCaracter == true){
-                this.ativarLimite = true
-            } else {
-                this.ativarLimite = false
-            }
-        }
-    },
-    
     template:`
         <div>
 
-            <div   v-if="ativarLimite == true" class="template2">
+            <div   v-if="ativar == true" class="template2">
                 <input 
-                    
                     type="text"  
                     :value="value" 
                     @input="$emit('input', $event.target.value)"  
                     placeholder="Nome da tarefa"
-                    maxlength="100"
-                    
+                    maxlength="100"  
                 >
-
                 <span :class="{
                         valorAceito: value.length <= 100 && value.length >0,
                         valorNaoAceito: value.length > 100,
                         valorPadrao: value.length == 0}">
                     {{value.length}}/100
                 </span>
-
             </div>
 
             <div v-else class="template2">
-                <input type="text"  
+                <input 
+                    type="text"  
                     :value="value" 
                     @input="$emit('input', $event.target.value)"  
                     placeholder="Nome da tarefa"
                     maxlength=""
-                     
                 >
-                <span :class="{
+                <span 
+                    :class="{
                         valorAceito: value.length <= 100 && value.length >0,
                         valorNaoAceito: value.length > 100,
-                        valorPadrao: value.length == 0}"> 
+                        valorPadrao: value.length == 0}"
+                > 
                     {{value.length}}/100
                 </span>
             </div>
