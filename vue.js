@@ -1,10 +1,10 @@
 Vue.component('input-checkbox', {
     methods: {
         ativaLimeteCaracter(){
-            if(temp.limitarCaracter == false ){
-                temp.limitarCaracter= true
-            } else if (temp.limitarCaracter== true){
-                temp.limitarCaracter= false
+            if(vm.limitarCaracter == false ){
+                vm.limitarCaracter= true
+            } else if (vm.limitarCaracter== true){
+                vm.limitarCaracter= false
             }
         }
     },
@@ -60,7 +60,7 @@ Vue.component('input-text-counter',{
 })
 
 let id = 0
-var temp = new Vue({
+var vm = new Vue({
     el:"#lista",
     data: {
         styleSelect: {
@@ -86,6 +86,17 @@ var temp = new Vue({
 
         limitarCaracter:false
     },
+
+    filters:{
+        toUpperCase(str){
+            const nomeTarefa = str.split("")
+            for (let i=0; i< nomeTarefa.length; i++){
+                nomeTarefa[0] = nomeTarefa[0].toUpperCase()
+            }
+            return nomeTarefa.join("");
+        }
+    },
+
     methods: {
         salvarTarefa(idTarefa){
             if (this.novaTarefa == "") {
@@ -125,6 +136,7 @@ var temp = new Vue({
             this.styleSelect.display = "" 
             this.novaTarefa = tarefa.texto
             this.idEditar = tarefa.id
+            
             
         },
         
@@ -234,7 +246,7 @@ var temp = new Vue({
                         {{tarefa.status}}
                     </td>
                     <td id="descricao" :class="{finalizado : tarefa.status=='Finalizado'}">
-                        {{tarefa.texto}}
+                        {{tarefa.texto | toUpperCase()}}
                     </td>
                     <td :class="
                         {expirou: tarefa.data[0] + tarefa.data[1]  < dataAtual[0] + dataAtual[1] 

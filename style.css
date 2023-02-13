@@ -55,7 +55,7 @@ body {
     
     border-radius: 6px;
     border: 1px solid white;
-    padding: 0 2px;
+    padding: 0 4px;
     
 }
 
@@ -88,6 +88,10 @@ body {
     text-indent: 8px;
     border: none;
     border-radius: 8px;
+}
+
+.template2 span{
+    padding-right: 4px;
 }
 
 .selectStatus{
