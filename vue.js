@@ -142,7 +142,7 @@ var vm = new Vue({
         
         deletarTarefa(tarefa){
             let valida = prompt("Deseja realmente deletar essa tarefa ?")
-            if (valida == "Sim"){
+            if (valida == "Sim" || valida == "sim" || valida == "SIM" ){
                 this.tarefas = this.tarefas.filter(i => i !== tarefa)
             }
         },
