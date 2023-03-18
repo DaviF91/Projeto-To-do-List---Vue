@@ -1,4 +1,7 @@
-
+<div align="center">
+  <img alt="Capa projeto" title="CRUD" src="./readme/crudVue.png">
+</div>
+<br>
 <h1 align="center"> 
 	 Projeto To-do-List Vue.js 🚀 
 </h1>
